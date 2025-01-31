@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/louayabidi/devops.git'
+            }
+        }
+        
+        stage('console'){
+            steps{
+                sh "mvn clean"
+                sh "mvn compile"
+               
+            }
+        }
+    }
+}
